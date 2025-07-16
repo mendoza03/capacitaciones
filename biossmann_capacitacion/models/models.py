@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
+import typing
+
 from odoo import models, fields, api
+from odoo.api import ValuesType, Self
 
 
 class biossmann_capacitacion(models.Model):
@@ -9,7 +12,17 @@ class biossmann_capacitacion(models.Model):
      name = fields.Char()
      value = fields.Integer()
      age = fields.Integer()
+     country = fields.Many2one('res.country')
+     country_name = fields.Char(compute='_show_name')
+     city = fields.Char()
      display_name = fields.Char()
+
+
+     def _show_name(self):
+          if self.country:
+               self.country_name = self.country.name
+          else:
+               self.country_name = 'sin pais'
 
 
 

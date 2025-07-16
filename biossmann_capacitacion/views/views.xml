@@ -8,7 +8,10 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="value"/>
+                            <field name="value" requiere="1"/>
+                            <field name="country" invisible="not name"/>
+                            <field name="country_name" invisible="1"/>
+                            <field name="city" invisible="country_name == 'Angola'"/>
                         </group>
                     </sheet>
                 </form>

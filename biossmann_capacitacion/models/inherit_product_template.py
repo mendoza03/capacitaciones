@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from email.policy import default
+
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
 
@@ -6,6 +8,22 @@ class InheritProductTemplate(models.Model):
     _inherit = 'product.template'
 
     campo_nuevo = fields.Char(string="campo para biossmann")
+
+    state_biossman = fields.Selection([('new', 'Draft product'), ('send', 'Send'), ('done', 'Done')], default='new')
+
+
+    def send_product(self):
+        self.write({
+            'state_biossman': 'send',
+            'campo_nuevo': 'se envio a gerente',
+        })
+
+    def validate_product(self):
+        self.write({
+            'state_biossman': 'done',
+            'campo_nuevo': 'lo valido el gerente',
+        })
+
 
     @api.model_create_multi
     def create(self, vals_list):

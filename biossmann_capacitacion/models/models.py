@@ -17,6 +17,9 @@ class biossmann_capacitacion(models.Model):
      city = fields.Char()
      display_name = fields.Char()
 
+     def send_product(self):
+          self.city = 'mexico'
+
 
      def _show_name(self):
           if self.country:

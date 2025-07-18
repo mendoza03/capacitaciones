@@ -5,6 +5,8 @@
             <field name="model">biossmann.capacitacion</field>
             <field name="arch" type="xml">
                 <form string="capacitacion">
+                    <header>
+                    </header>
                     <sheet>
                         <group>
                             <field name="name"/>

@@ -5,9 +5,15 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='barcode']" position="after">
-                    <field name="campo_nuevo"/>
+                <xpath expr="//header" position="inside">
+                    <button name="send_product" string="Enviar" type="object" class="btn-primary" invisible="state_biossman != 'new'" />
+                    <button name="validate_product" string="validar" type="object" class="btn-primary" invisible="state_biossman != 'send'" />
+                    <field name="state_biossman" widget="statusbar"/>
                 </xpath>
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="campo_nuevo" />
+                </xpath>
+
             </field>
         </record>
 

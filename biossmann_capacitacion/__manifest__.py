@@ -18,12 +18,13 @@ Long description of module's purpose
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','project'],
+    'depends': ['base','project','product'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
+        'views/inherit_product_template.xml',
         #'views/templates.xml',
     ],
 }

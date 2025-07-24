@@ -17,6 +17,10 @@ class biossmann_capacitacion(models.Model):
      city = fields.Char()
      display_name = fields.Char()
 
+     line_ids = fields.One2many('biossmann.capacitacion.lineas', 'capacitacion_ids', string='lineas')
+
+     doctor_ids = fields.Many2many('biossmann.capacitacion.doctores', string='Doctors')
+
      def send_product(self):
           self.city = 'mexico'
 
@@ -28,12 +32,17 @@ class biossmann_capacitacion(models.Model):
                self.country_name = 'sin pais'
 
 
+class biossmann_capacitacionLineas(models.Model):
+     _name = 'biossmann.capacitacion.lineas'
 
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+     name = fields.Char()
+     value = fields.Integer()
+     capacitacion_ids = fields.Many2one('biossmann.capacitacion', string='Capacitacion')
 
+
+
+class biossmann_capacitacionDoctores(models.Model):
+     _name = 'biossmann.capacitacion.doctores'
+
+     name = fields.Char()
+     value = fields.Integer()

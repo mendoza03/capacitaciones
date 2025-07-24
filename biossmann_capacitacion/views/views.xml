@@ -14,7 +14,23 @@
                             <field name="country" invisible="not name"/>
                             <field name="country_name" invisible="1"/>
                             <field name="city" invisible="country_name == 'Angola'"/>
+                            <field name="doctor_ids" widget="many2many_tags"/>
                         </group>
+                        <notebook>
+                            <page name="lines" string="Lines">
+                                <field name="line_ids" widget="sol_o2m">
+                                        <list editable="bottom" limit="200">
+                                            <field name="name"/>
+                                            <field name="value" />
+                                        </list>
+                                    <form>
+                                            <field name="name"/>
+                                            <field name="value" />
+                                        </form>
+                                </field>
+                            </page>
+                        </notebook>
+
                     </sheet>
                 </form>
             </field>
